@@ -1,0 +1,338 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta content="en-us" http-equiv="Content-Language" />
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<title>CSE 310 Assignment #4</title>
+<style type="text/css">
+.auto-style1 {
+	font-family: "Courier New", Courier, monospace;
+}
+.auto-style2 {
+	font-family: "Times New Roman", Times, serif;
+	font-size: medium;
+}
+*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}
+*{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}
+.auto-style5 {
+	font-size: 12.0pt;
+	font-family: "Times New Roman", serif;
+	color: black;
+	margin-left: 0in;
+	margin-right: 0in;
+	margin-top: 0in;
+	margin-bottom: .0001pt;
+}
+.auto-style6 {
+	text-indent: -.25in;
+	font-size: 12.0pt;
+	font-family: "Times New Roman", serif;
+	color: black;
+	margin-left: 0in;
+	margin-right: 0in;
+	margin-top: 0in;
+	margin-bottom: .0001pt;
+}
+.auto-style7 {
+	font-family: "Times New Roman", Times, serif;
+}
+.auto-style8 {
+	font-size: medium;
+}
+.auto-style9 {
+	letter-spacing: normal;
+}
+.auto-style10 {
+	font-size: large;
+}
+</style>
+</head>
+
+<body>
+
+<h2 align="center" style="text-align: center"><b>
+<span style="font-size: 14.0pt">CSE 310 Assignment #7</span></b></h2>
+<h3 style="font-size: medium"><b>Due on: Sunday, Dec. 1st, 2019, 11:59pm 
+Arizona time<o:p></o:p></b></h3>
+
+	<h3><span style='mso-fareast-font-family:"Times New Roman"'>General Requirements 
+	for Assignment</span></h3>
+
+	<ul>
+		<li><span class="auto-style16"><em><strong>All assignments in this 
+		course must be individual work</strong></em></span>, <em>i.e.</em> you 
+		are required to compose your own unique solution to each assignment. We 
+		will use powerful plagiarism detection software to compare and check all 
+		products submission, cheating will be reported to the Dean's office!</li>
+		<li>It must be submitted online through Blackboard!
+		<span class="auto-style16"><em><strong>We don&#8217;t accept submissions 
+		through emails</strong></em></span>.</li>
+		<li>Submission link will be closed automatically once the due date/time 
+		is past. <span class="auto-style16"><em><strong>Strictly no late 
+		assignment will be accepted</strong></em></span>.</li>
+		<li>For each assignment, you will be allowed 3 times to submit, but we 
+		will only grade your last submission.</li>
+	</ul>
+<h3><b>Objectives </b><o:p></o:p></h3>
+<p class="Default" style="margin-top: 0in; margin-right: 0in; margin-bottom: 1.35pt; margin-left: .5in; text-indent: -.25in; mso-list: l5 level1 lfo2">
+<![if !supportLists]>
+<span style="mso-list: Ignore">
+<span style="mso-fareast-font-family: Symbol; mso-bidi-font-family: Symbol" class="auto-style2">
+·</span><span style="font-family: Symbol; mso-fareast-font-family: Symbol; mso-bidi-font-family: Symbol"><span style="font-style: normal; font-variant: normal; font-weight: normal; line-height: normal;" class="auto-style2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>Practice 
+Kruskal MST algorithm on undirected graph by using disjoint sets</span></span></span></span><![endif]>.<o:p></o:p></p>
+<h3><b>File(s) Given (right-click to download each of the files)</b></h3>
+<ul>
+	<li><![if !supportLists]>
+	<span style="font-family: Symbol; mso-fareast-font-family: Symbol; mso-bidi-font-family: Symbol">
+	<span style="mso-list: Ignore">
+	<span class="auto-style2" style="font-style: normal; font-variant: normal; font-weight: normal; line-height: normal; font-family: 'Times New Roman';">
+	<a href="Assignment7.cpp">Assignment7.cpp</a> (<strong>Partialy given.</strong> This 
+	is the driver program.)</span></span></span><![endif]></li>
+	<li><a href="Edge.h">Edge.h</a>&nbsp; (<strong>Partialy given.</strong> 
+	This represents an edge of the graph)</li>
+	<li><a href="Graph.h">Graph.h</a> (<strong>Partialy given.</strong> This 
+	represents an undirected graph.)</li>
+</ul>
+<h3><b>1. Assignment Description </b><o:p></o:p></h3>
+<p class="MsoNormal"><span>1. In this assignment, you will implement the 
+Kruskal's algorithm to find a minimum spanning tree and compute its total 
+weight. The example input is given as follows:</span></p>
+<p class="MsoNormal"><span class="auto-style1">7&nbsp;&nbsp;&nbsp; 9</span><br class="auto-style1" />
+<span class="auto-style1">Atlanta,Boston(700.5),Chicago(250.5),</span><br class="auto-style1" />
+<span class="auto-style1">Boston,Dallas(350.0),El Paso(400.75),</span><br class="auto-style1" />
+<span class="auto-style1">Chicago,Houston(625.0),</span><br class="auto-style1" />
+<span class="auto-style1">Dallas,Houston(600.5),Kansas(450.75),</span><br class="auto-style1" />
+<span class="auto-style1">El Paso,Kansas(300.75),</span><br class="auto-style1" />
+<span class="auto-style1">Houston,Kansas(550.0),</span><br class="auto-style1" />
+<span class="auto-style1">Kansas,,</span><br class="auto-style1" />
+<span class="auto-style1">End</span></p>
+<p class="MsoNormal">The two numbers in the first line represents number of 
+cities and number of flight routes. <em>i.e.</em> they corresponds to number of 
+vertices and number of edges of an undirected graph. For above example, there 
+will be 7 different cities and 9 different round flight routes.</p>
+<p class="MsoNormal">Followed by the two numbers are lines repersent departure 
+and arrival city and air ticket price info. For example:</p>
+<p class="MsoNormal"><span class="auto-style1">
+Atlanta,Boston(700.5),Chicago(250.5),</span></p>
+<p class="MsoNormal">Above represents a departure city <span class="auto-style1">
+Atlanta</span> and two arrival cities, <span class="auto-style1">Boston
+</span>and <span class="auto-style7"><span class="auto-style1">Chicago</span>. 
+Number inside the parenthesis represents the airfair, <em>i.e.</em> from Atlanta 
+to Boston, the air ticket price is $700.5, and from Atlanta to Chicago, the 
+air ticket price is $250.5. Note: the ticket price info. represents the weight 
+of the edge.</span></p>
+<p class="MsoNormal"><span>Each edge of the graph will be the round route from a 
+departure city to an arrival city. In above input file, we only list each route 
+once. For example there's one route from Atlanta to Boston and ticket price is 
+700.5, we don't list route from Boston back to Atlanta since Kruskal algorithm 
+only handle undirected graph.</span></p>
+<p class="MsoNormal">Each input will end with an "<span class="auto-style1">End</span>".</p>
+<p class="MsoNormal">2. Kruskal's algorithm uses a data structure called 
+disjoint-set.
+<span class="auto-style2" style="color: rgba(0, 0, 0, 0.84); font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;">
+A<span>&nbsp;</span></span><em class="auto-style7" style="border-style: none; border-color: inherit; border-width: 0px; margin: 0px; padding: 0px; font-size: 16px; vertical-align: baseline; color: rgba(0, 0, 0, 0.84); font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;"><a class="auto-style8" href="http://en.wikipedia.org/wiki/Disjoint-set_data_structure" style="border-style: none; border-color: inherit; border-width: 0px; margin: 0px; padding: 0px; vertical-align: baseline; outline: none; color: rgb(236, 78, 32); text-decoration: none;">disjoint-set 
+data structure</a></em><span class="auto-style8" style="color: rgba(0, 0, 0, 0.84); font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;"><span class="auto-style7">&nbsp;</span></span><span class="auto-style2" style="color: rgba(0, 0, 0, 0.84); font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;">is 
+a data structure that keeps track of a set of elements partitioned into a number 
+of disjoint (non-overlapping) subsets.<span>&nbsp;In this assignment, we will use 
+disjoint-set forest to implement the Kruskal's algorithm. </span>Read our 
+textbook chapter 21.3 (pp.568) for more information on Disjoint-set forests.</span></p>
+<p class="MsoNormal"><span class="auto-style9">For a faster implementation of 
+the disjoint sets, you will need to design the following operations:</span></p>
+<ul>
+	<li>
+	<p class="MsoNormal"><span class="auto-style1">make_set(x)</span> : creates 
+	a new set whose only member (and thus representative is x). Since the sets 
+	are disjoint, we require that x not already be in some other sets.</p>
+	</li>
+	<li>
+	<p class="MsoNormal"><span class="auto-style1">find_set(x)</span>: returns a 
+	pointer to the repersentative of the (unique) set containing x.</p>
+	</li>
+	<li>
+	<p class="MsoNormal"><span class="auto-style1">Union(x)</span>: unites the 
+	dynamic sets that contain x and y, say Sx and Sy, into a new set that is the 
+	union of these two sets. We assue the two sets are disjoint prior to the 
+	operation.</p>
+	</li>
+</ul>
+<p class="MsoNormal">3. Using the given input, store the information of edges 
+inside an edge array. For each edge, it contains the two cities' info. and also 
+the weight of the edge (price).&nbsp; </p>
+<p class="MsoNormal">4. In Kruskal's algorithm, you will need to sort all edge 
+in non-decreasing order according to their weight. In this assignment, we will 
+use Merge Sort to do this, feel free to switch to Heap Sort if you'd like. Then 
+use the disjoint-set data structure to produce a minimum spanning tree using 
+Kruskal's algorithm and print the minimum spanning tree edges as follows:</p>
+<p class="MsoNormal"><span class="auto-style1">MST Kruskal Algorithm Result</span><br class="auto-style1" />
+<br class="auto-style1" />
+<span class="auto-style1">Atlanta&nbsp;&nbsp;&nbsp; &lt;---&gt;&nbsp;&nbsp;&nbsp; 
+Chicago&nbsp;&nbsp;&nbsp; = 250.50</span><br class="auto-style1" />
+<span class="auto-style1">El Paso&nbsp;&nbsp;&nbsp; &lt;---&gt;&nbsp;&nbsp;&nbsp; 
+Kansas&nbsp;&nbsp;&nbsp;&nbsp; = 300.75</span><br class="auto-style1" />
+<span class="auto-style1">Boston&nbsp;&nbsp;&nbsp;&nbsp; &lt;---&gt;&nbsp;&nbsp;&nbsp; 
+Dallas&nbsp;&nbsp;&nbsp;&nbsp; = 350.00</span><br class="auto-style1" />
+<span class="auto-style1">Boston&nbsp;&nbsp;&nbsp;&nbsp; &lt;---&gt;&nbsp;&nbsp;&nbsp; 
+El Paso&nbsp;&nbsp;&nbsp; = 400.75</span><br class="auto-style1" />
+<span class="auto-style1">Houston&nbsp;&nbsp;&nbsp; &lt;---&gt;&nbsp;&nbsp;&nbsp; 
+Kansas&nbsp;&nbsp;&nbsp;&nbsp; = 550.00</span><br class="auto-style1" />
+<span class="auto-style1">Chicago&nbsp;&nbsp;&nbsp; &lt;---&gt;&nbsp;&nbsp;&nbsp; 
+Houston&nbsp;&nbsp;&nbsp; = 625.00</span><br class="auto-style1" />
+<span class="auto-style1">============================================</span><br class="auto-style1" />
+<span class="auto-style1">Total Price: 2477.00</span></p>
+<p class="MsoNormal"><span>print all vertex pairs (edges) with their weight in 
+the order that they were added to the tree, and the total tree weight. Note: in 
+the Kruskal's algorithm, when an edge is added to the set A:</span></p>
+<p class="MsoNormal"><strong><span class="auto-style1">A = A</span></strong><span class="auto-style10">
+<span class="auto-style1"><strong>U</strong></span></span>
+<span class="auto-style1"><strong>{ ( u, v ) }</strong></span></p>
+<p class="MsoNormal">you just need to print each edge (with their vertex names 
+and its weight) instead of actually adding to the set A, so that your Kruskal 
+function does not need to return the set A.</p>
+<h3>2<b style="mso-bidi-font-weight: normal">. Implementation/Documentation 
+Requirements</b><o:p></o:p></h3>
+<ul>
+	<li>
+	<p class="auto-style5" style="text-autospace: none;">You need implement this program using C++ and it 
+has to read from the standard input (from a keyboard).</p>
+	</li>
+	<li>
+	<p class="auto-style5" style="text-autospace: none;">Your program needs to compile and execute in
+	<span style="mso-bidi-font-style: normal"><strong><em>general.asu.edu</em></strong></span>.</p>
+	</li>
+	<li>
+	<p class="auto-style5" style="text-autospace: none;"><strong><em>You are not 
+	allowed to use any predefined data structures, such as vector, list, etc in 
+	C++ library. You must define/build your own data structures and operations 
+	associated with them. (You can use arrays and strings)</em></strong></p>
+	</li>
+	<li>
+	<p class="auto-style5" style="text-autospace: none;">
+	<o:p>To compile, type for example: (Note: <em>in order to use stoi() 
+	function, you will need to compile under c++11</em>)</o:p></p>
+	</li>
+</ul>
+<p class="auto-style6" style="mso-list: l0 level1 lfo6; text-autospace: none;">
+<o:p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="auto-style1">
+<span class="auto-style4"><strong>g++ -std=c++11 -o prog Assignment7.cpp 
+*.h</strong></span></span></o:p></p>
+<p class="auto-style6" style="mso-list: l0 level1 lfo6; text-autospace: none;">
+<o:p></o:p>
+</p>
+<p class="auto-style6" style="mso-list: l0 level1 lfo6; text-autospace: none;">
+<o:p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; To run with the input test cases, type for example:</o:p></p>
+<p class="auto-style6" style="mso-list: l0 level1 lfo6; text-autospace: none;">
+<o:p></o:p>
+</p>
+<p class="auto-style6" style="mso-list: l0 level1 lfo6; text-autospace: none;">
+<o:p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<span class="auto-style4"><strong>&nbsp;<span class="auto-style1">./prog 
+&lt;input1.txt &gt;myout1.txt</span></strong></span></o:p></p>
+<p class="Default" style="font-family: 'Times New Roman', Times, serif; font-size: medium">
+<i>Copy any codes from other people’s programs is considered to be cheating and 
+will lead to a report to the Dean and you will be penalized. Also check the 
+rules stated in the syllabus of the course regarding the academic integrity.<o:p></o:p></i></p>
+<h3><b style="mso-bidi-font-weight: normal">3. What to turn in<o:p></o:p></b></h3>
+<p class="Default"><span style="mso-bidi-font-weight: normal">
+<o:p>You need to turn in all the finished 3<strong> </strong>files, put them in 
+a zipped folder and name it as <span class="auto-style1"><strong><em>
+FirstnameLastnameHW7.zip</em></strong></span>, such as <em>SherryFengHW7.zip, </em>
+submit <span class="auto-style1"><strong><em>FirstnameLastnameHW7.zip on 
+</em></strong></span> <span class="auto-style7">Canvas</span><span class="auto-style1"><strong><em>.</em></strong></span></o:p></span></p>
+<ul>
+	<li><![if !supportLists]>
+	<span style="font-family: Symbol; mso-fareast-font-family: Symbol; mso-bidi-font-family: Symbol">
+	<span style="mso-list: Ignore">
+	<span class="auto-style2" style="font-style: normal; font-variant: normal; font-weight: normal; line-height: normal; font-family: 'Times New Roman';">
+	Assignment7.cpp </span></span></span><![endif]></li>
+	<li>Edge.h&nbsp; </li>
+	<li>Graph.h </li>
+</ul>
+<h3>4. <b style="mso-bidi-font-weight: normal">Input and Output Test Cases</b></h3>
+<h3><span style="mso-fareast-font-family: &quot;Times New Roman&quot;;">Input<o:p></o:p></span></h3>
+<p><span style="mso-bidi-font-weight: normal">
+<o:p>The following four input files are provided for you for testing purpose 
+(Right-click and use "Save As" to download them. Don't copy &amp; paste!). They were 
+designed to check your program step by step.&nbsp; </o:p>
+I recommend that you check your code with input1.txt first, followed by 
+input2.txt, input3.txt, etc. </span></p>
+<ul>
+	<li><font color="blue"><a href="input1.txt">input1.txt</a></font></li>
+	<li><font color="blue"><a href="input2.txt">input2.txt</a></font></li>
+	<li><font color="blue"><a href="input3.txt">input3.txt</a></font></li>
+	<li><font color="blue"><a href="input4.txt">input4.txt</a> </font></li>
+</ul>
+<h3><span style="mso-fareast-font-family: &quot;Times New Roman&quot;;">Output<o:p></o:p></span></h3>
+<p>The following files are the expected outputs of the corresponding input files 
+from the previous section (Right-click and use "Save As"). Note: <strong>for 
+this assignment, your output should be exactly the SAME as our solution output, if not, your program didn't pass the test cases! </strong>
+Consider using <a href="https://sourcegear.com/diffmerge/downloads.php">
+DiffMerge</a> to compare your program's output with our solution output.</p>
+<ul>
+	<li><![if !supportLists]>
+	<span style="font-family: Symbol; mso-fareast-font-family: Symbol; mso-bidi-font-family: Symbol">
+	<span style="mso-list: Ignore">
+	<span class="auto-style2" style="font-style: normal; font-variant: normal; font-weight: normal; line-height: normal; font-family: 'Times New Roman';">
+	<a href="output1.txt">output1.txt</a></span></span></span><![endif]></li>
+	<li><a href="output2.txt">output2.txt</a></li>
+	<li><a href="output3.txt">output3.txt</a></li>
+	<li><a href="output4.txt">output4.txt</a></li>
+</ul>
+<h3>5<b><span style="mso-bidi-font-style: italic">. Grading Rubric</span></b>
+<o:p>(Total points: 30)</o:p></h3>
+<p class="Default"><o:p>&nbsp;</o:p><![if !supportLists]><span style="mso-list: Ignore"><span style="mso-fareast-font-family: Symbol; mso-bidi-font-family: Symbol">&nbsp;&nbsp;&nbsp;&nbsp;
+</span>
+<span style="font-family: Symbol; mso-fareast-font-family: Symbol; mso-bidi-font-family: Symbol">
+·<span style="font: 7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-style: normal; font-variant: normal; font-weight: normal; line-height: normal; font-family: 'Times New Roman';" class="auto-style8"> 
+2</span></span></span><![endif]> pts – Documentation (correct and complete code 
+description and comments, header for each function/method)<o:p></o:p></p>
+<p class="Default" style="margin-left: .5in; text-indent: -.25in; mso-list: l2 level1 lfo3">
+<![if !supportLists]><span style="mso-list: Ignore">
+<span style="font-family: Symbol; mso-fareast-font-family: Symbol; mso-bidi-font-family: Symbol">
+·<span style="font: 7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>
+<span class="auto-style6" style="font-style: normal; font-variant: normal; font-weight: normal; line-height: normal; font-family: 'Times New Roman';">&nbsp;2</span></span></span><![endif]><span class="auto-style5"> 
+pt – </span>Indentation and Spacing (easy to read)<o:p></o:p></p>
+<p class="Default" style="margin-left: .5in; text-indent: -.25in; mso-list: l2 level1 lfo3">
+<![if !supportLists]>
+<span style="mso-list: Ignore">
+<span style="font-family: Symbol; mso-fareast-font-family: Symbol; mso-bidi-font-family: Symbol">
+·<span style="font-style: normal; font-variant: normal; font-weight: normal; line-height: normal; font-family: 'Times New Roman';" class="auto-style8">&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>
+<span style="mso-fareast-font-family: Symbol; mso-bidi-font-family: Symbol">
+<span style="font-style: normal; font-variant: normal; font-weight: normal; line-height: normal;">
+2</span></span></span><![endif]> pts –Edge.h is defined correctly<o:p>.</o:p></p>
+<p class="Default" style="margin-left: .5in; text-indent: -.25in; mso-list: l2 level1 lfo3">
+<o:p>
+<![if !supportLists]>
+<span style="mso-list: Ignore">
+<span style="font-family: Symbol; mso-fareast-font-family: Symbol; mso-bidi-font-family: Symbol">
+·<span style="font-style: normal; font-variant: normal; font-weight: normal; line-height: normal; font-family: 'Times New Roman';" class="auto-style8">&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span>
+4</span><![endif]> pts – Graph.h is defined 
+correctly;</o:p></p>
+<p class="Default" style="margin-left: .5in; text-indent: -.25in; mso-list: l2 level1 lfo3">
+<![if !supportLists]>
+<span style="mso-list: Ignore">
+<span style="font-family: Symbol; mso-fareast-font-family: Symbol; mso-bidi-font-family: Symbol">
+·<span style="font-style: normal; font-variant: normal; font-weight: normal; line-height: normal; font-family: 'Times New Roman';" class="auto-style8">&nbsp;&nbsp;&nbsp;&nbsp; 
+</span></span>
+<span style="mso-fareast-font-family: Symbol; mso-bidi-font-family: Symbol">
+<span style="font-style: normal; font-variant: normal; font-weight: normal; line-height: normal; ">
+4</span></span></span><![endif]> pts – Assignment7.cpp 
+is defined correctly.</p>
+<p class="Default" style="margin-left: .5in; text-indent: -.25in; mso-list: l2 level1 lfo3">
+<![if !supportLists]>
+<span style="font-family: Symbol; mso-fareast-font-family: Symbol; mso-bidi-font-family: Symbol">
+<span style="mso-list: Ignore">·<span style="font: 7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]> 
+<o:p>
+16 pts – Correct output for the four test cases<o:p>.</o:p></o:p></p>
+      <span class="auto-style7">
+<P><I>Copyright © Xuerong Feng 2019<BR>Arizona State University<BR>All rights 
+reserved.</I><BR><A href="http://www.asu.edu/asuweb/disclaimer/">ASU 
+disclaimer</A></P>
+
+</body>
+
+</html>

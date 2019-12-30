@@ -1,0 +1,6 @@
+4	5
+Phoenix,Tucson(250.0),Seattle(325.5),New York(300.0),
+Tucson,New York(275.5),
+Seattle,New York(350.5),
+New York,,
+End

@@ -1,0 +1,9 @@
+7	9
+Atlanta,Boston(700.5),Chicago(250.5),
+Boston,Dallas(350.0),El Paso(400.75),
+Chicago,Houston(625.0),
+Dallas,Houston(600.5),Kansas(450.75),
+El Paso,Kansas(300.75),
+Houston,Kansas(550.0),
+Kansas,,
+End

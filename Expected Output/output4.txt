@@ -1,0 +1,14 @@
+MST Kruskal Algorithm Result
+
+Chicago        <--->   Dallas          =   200.00
+Kansas         <--->   Miami           =   200.00
+Boston         <--->   Chicago         =   300.00
+El Paso        <--->   Miami           =   300.00
+Atlanta        <--->   Boston          =   420.00
+Dallas         <--->   Miami           =   420.00
+Miami          <--->   Tampa           =   420.00
+New York       <--->   Phoenix         =   420.00
+Boston         <--->   Houston         =   530.00
+Kansas         <--->   Phoenix         =   610.00
+=================================================
+Total Price: 3820.00

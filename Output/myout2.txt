@@ -1,0 +1,10 @@
+MST Kruskal Algorithm Result
+
+Atlanta        <--->   Chicago         =   250.50
+El Paso        <--->   Kansas          =   300.75
+Boston         <--->   Dallas          =   350.00
+Boston         <--->   El Paso         =   400.75
+Houston        <--->   Kansas          =   550.00
+Chicago        <--->   Houston         =   625.00
+=================================================
+Total Price: 2477.00

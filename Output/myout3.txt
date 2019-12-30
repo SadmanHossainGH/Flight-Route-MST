@@ -1,0 +1,12 @@
+MST Kruskal Algorithm Result
+
+Phoenix        <--->   Tuscon          =   150.00
+Los Angeles    <--->   San Diego       =   200.00
+Santa Fe       <--->   Tuscon          =   200.00
+Seattle        <--->   San Francisco   =   450.00
+Los Angeles    <--->   Santa Fe        =   450.00
+Los Angeles    <--->   Honolulu        =   710.50
+Seattle        <--->   Phoenix         =   820.00
+Honolulu       <--->   Atlanta         =   920.00
+=================================================
+Total Price: 3900.50

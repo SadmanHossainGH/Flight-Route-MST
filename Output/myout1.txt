@@ -1,0 +1,7 @@
+MST Kruskal Algorithm Result
+
+Phoenix        <--->   Tucson          =   250.00
+Tucson         <--->   New York        =   275.50
+Phoenix        <--->   Seattle         =   325.50
+=================================================
+Total Price: 851.00
